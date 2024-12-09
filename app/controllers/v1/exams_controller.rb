@@ -1,19 +1,16 @@
-class ExamsController < ApplicationController
+class V1::ExamsController < ApplicationController
   before_action :set_exam, only: %i[ show update destroy ]
 
-  # GET /exams
   def index
     @exams = Exam.all
 
     render json: @exams
   end
 
-  # GET /exams/1
   def show
     render json: @exam
   end
 
-  # POST /exams
   def create
     @exam = Exam.new(exam_params)
 
@@ -24,7 +21,6 @@ class ExamsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /exams/1
   def update
     if @exam.update(exam_params)
       render json: @exam
@@ -33,18 +29,16 @@ class ExamsController < ApplicationController
     end
   end
 
-  # DELETE /exams/1
   def destroy
     @exam.destroy!
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_exam
       @exam = Exam.find(params.expect(:id))
     end
 
-    # Only allow a list of trusted parameters through.
     def exam_params
       params.expect(exam: [ :title, :year, :disciplines, :languages ])
     end
