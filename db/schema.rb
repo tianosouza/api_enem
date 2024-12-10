@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_09_041502) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_10_031507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -21,6 +21,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_09_041502) do
     t.string "languages", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "questions", default: [], array: true
   end
 
   create_table "questions", force: :cascade do |t|
@@ -36,6 +37,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_09_041502) do
     t.string "alternatives", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "exam_id"
   end
 
   create_table "years", force: :cascade do |t|
