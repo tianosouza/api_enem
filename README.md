@@ -4,51 +4,20 @@
 
 Para instalar o Docker no Linux, siga os passos abaixo. Estes passos são baseados na instalação do Docker em distribuições baseadas no Debian (como Ubuntu). Para outras distribuições, os comandos podem variar.
 
-### 1. **Atualizar os pacotes do sistema**
-Abra o terminal e execute o seguinte comando para garantir que todos os pacotes do sistema estejam atualizados:
+### 1. **Baixe o docker seguindo os passos da documentação**
 
-```bash
-sudo apt update
-sudo apt upgrade
-```
+[Docker](https://www.docker.com/get-started/)
 
-### 2. **Instalar dependências**
-Instale pacotes que serão necessários para usar repositórios HTTPS:
+#### **Assumindo que esteja usando o linux**
 
-```bash
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
-```
-
-### 3. **Adicionar a chave GPG do Docker**
-Adicione a chave GPG oficial do Docker:
-
-```bash
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-```
-
-### 4. **Adicionar o repositório do Docker**
-Adicione o repositório do Docker às suas fontes de software:
-
-```bash
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-```
-
-### 5. **Instalar o Docker**
-Atualize os pacotes e instale o Docker:
-
-```bash
-sudo apt update
-sudo apt install docker-ce docker-ce-cli containerd.io
-```
-
-### 6. **Verificar a instalação**
+### 2. **Verificar a instalação**
 Verifique se o Docker foi instalado corretamente:
 
 ```bash
 sudo docker --version
 ```
 
-### 7. **Executar o Docker sem sudo (opcional)**
+### 3. **Executar o Docker sem sudo (opcional)**
 Para evitar usar `sudo` em todos os comandos Docker, adicione seu usuário ao grupo Docker:
 
 ```bash
@@ -91,6 +60,18 @@ git clone https://github.com/tianosouza/api_enem.git
 
 ### Usando containers...
 
+**Antes de tudo crie um arquivo .env na raiz do projeto**
+
+```bash
+# Adicione ao arquivo .env
+DB_HOST=api_enem-db
+POSTGRES_DB=api_enem-pg
+POSTGRES_USER=api_enem
+POSTGRES_PASSWORD=api_enem
+```
+
+## No terminal
+
 ```bash
 # Create a new container
 docker-compose up --build -d web
@@ -100,3 +81,20 @@ docker-compose up --build -d web
 # Run container
 docker exec -ti api_enem bash
 ```
+
+### No container....
+
+```bash
+# Criando o database e rodando as migrations
+rails db:create db:migrate
+```
+
+```bash
+# Iniciando o servidor
+rails s -b 0.0.0.0 -p 4002
+```
+
+## NOTA
+**Caso dê algum erro de pids e so ir ate ao diretorio tmp/pids e apagara o server.pid**
+
+
