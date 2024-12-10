@@ -27,3 +27,5 @@ group :development, :test do
   gem "foreman", "~> 0.88.1"
   gem "faker", "~> 3.5"
 end
+
+gem "rswag", "~> 2.16"

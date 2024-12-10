@@ -14,12 +14,6 @@ class V1::QuestionsController < ApplicationController
     render json: @question
   end
 
-  def exam
-    @questions = Question.by_year(params[:year])
-
-    render json: @questions
-  end
-
   def create
     @question = Question.new(question_params)
 
@@ -44,12 +38,12 @@ class V1::QuestionsController < ApplicationController
 
   private
 
-    def set_question
-      @question = Question.find(params.expect(:id))
-    end
+  def set_question
+    @question = Question.find(params[:id])
+  end
 
 
-    def question_params
-      params.expect(question: [ :title, :index, :year, :language, :discipline, :context, :file, :correct_alternative, :alternatives_introduction, :alternatives, :exam_id ])
-    end
+  def question_params
+    params.expect(question: [ :title, :index, :year, :language, :discipline, :context, :file, :correct_alternative, :alternatives_introduction, :alternatives ])
+  end
 end
