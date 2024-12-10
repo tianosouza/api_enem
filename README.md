@@ -89,7 +89,7 @@ Depois de instalar, você poderá usar o Docker Compose para gerenciar seus cont
 git clone https://github.com/tianosouza/api_enem.git
 ```
 
-### Using containers...
+### Usando containers...
 
 ```bash
 # Create a new container
