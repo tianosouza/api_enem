@@ -3,12 +3,18 @@ class V1::QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
-    
+
     render json: @questions
   end
 
   def show
     render json: @question
+  end
+
+  def exam
+    @questions = Question.by_year(params[:year])
+
+    render json: @questions
   end
 
   def create
@@ -41,6 +47,6 @@ class V1::QuestionsController < ApplicationController
 
 
     def question_params
-      params.expect(question: [ :title, :index, :year, :language, :discipline, :context, :file, :correct_alternative, :alternatives_introduction, :alternatives ])
+      params.expect(question: [ :title, :index, :year, :language, :discipline, :context, :file, :correct_alternative, :alternatives_introduction, :alternatives, :exam_id ])
     end
 end

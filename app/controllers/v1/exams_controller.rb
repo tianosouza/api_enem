@@ -36,7 +36,7 @@ class V1::ExamsController < ApplicationController
   private
 
     def set_exam
-      @exam = Exam.find(params.expect(:id))
+      @exam = Exam.find_by!(year: params[:year]) || Exam.find(params[:id])
     end
 
     def exam_params
