@@ -95,15 +95,6 @@ git clone https://github.com/tianosouza/api_enem.git
 # Create a new container
 docker-compose up --build -d web
 ```
-```bash
-# Create network
-docker network create apps
-```
-
-```bash
-# Conect network
-docker network connect apps api_enem
-```
 
 ```bash
 # Run container
