@@ -2,7 +2,10 @@ class V1::QuestionsController < ApplicationController
   before_action :set_question, only: %i[ show update destroy ]
 
   def index
-    @questions = Question.all
+    page_number = params[:page].try(:[], :number)
+    page_size = params[:page].try(:[], :size) || 10
+
+    @questions = Question.all.page(page_number).per(page_size)
 
     render json: @questions
   end

@@ -14,6 +14,7 @@ gem "thruster", require: false
 gem "rack-cors", "~> 2.0"
 gem "active_model_serializers", "~> 0.10.14"
 gem "jbuilder"
+gem "kaminari", "~> 1.2"
 
 group :development, :test do
   gem "dotenv-rails", "~> 3.1", ">= 3.1.4"

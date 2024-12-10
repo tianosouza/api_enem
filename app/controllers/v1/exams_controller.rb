@@ -2,7 +2,10 @@ class V1::ExamsController < ApplicationController
   before_action :set_exam, only: %i[ show update destroy ]
 
   def index
-    @exams = Exam.all
+    page_number = params[:page].try(:[], :number)
+    page_size = params[:page].try(:[], :size) || 10
+
+    @exams = Exam.all.page(page_number).per(page_size)
 
     render json: @exams
   end
