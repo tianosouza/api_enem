@@ -95,6 +95,6 @@ rails s -b 0.0.0.0 -p 4002
 ```
 
 ## NOTA
-**Caso dê algum erro de pids e so ir ate ao diretorio tmp/pids e apagara o server.pid**
+**Caso dê algum erro de pids e so ir ate ao diretorio tmp/pids e apagar o server.pid**
 
 
