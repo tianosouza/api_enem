@@ -29,3 +29,5 @@ group :development, :test do
 end
 
 gem "rswag", "~> 2.16"
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
