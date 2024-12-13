@@ -17,7 +17,7 @@ gem "jbuilder"
 gem "kaminari", "~> 1.2"
 
 group :development, :test do
-  gem "dotenv-rails", "~> 3.1", ">= 3.1.4"
+  gem "dotenv-rails", "~> 3.1"
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
   gem "rspec-rails", "~> 7.0", ">= 7.0.1"
